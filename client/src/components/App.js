@@ -4,6 +4,7 @@ import KooNavBar from "./NavBar";
 import About from "./Pages/About";
 import FAQs from "./Pages/FAQs";
 import Home from "./Pages/Home";
+import Login from "./Pages/Login";
 import Works from "./Pages/Works";
 
 class App extends Component {
@@ -18,6 +19,8 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/faqs" component={FAQs} />
           <Route path="/work" component={Works} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Login} />
           <Route path="/" exact={true} component={Home} />
         </Switch>
       </div>
