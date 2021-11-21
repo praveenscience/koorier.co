@@ -11,7 +11,7 @@ import {
   DropdownMenu
 } from "reactstrap";
 
-const KooNavBar = () => {
+const KooNavBar = ({ User }) => {
   return (
     <Navbar color="dark" dark expand="md" fixed="top" container>
       <Link to="/" className="navbar-brand">
@@ -48,6 +48,33 @@ const KooNavBar = () => {
               </NavLink>
             </DropdownMenu>
           </UncontrolledDropdown>
+          {User ? (
+            <>
+              <NavItem>
+                <NavLink to="/profile" className="nav-link">
+                  Profile
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <Link to="/" className="nav-link">
+                  Logout
+                </Link>
+              </NavItem>
+            </>
+          ) : (
+            <>
+              <NavItem>
+                <NavLink to="/login" className="nav-link">
+                  Login
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <Link to="/register" className="nav-link">
+                  Register
+                </Link>
+              </NavItem>
+            </>
+          )}
         </Nav>
       </Collapse>
     </Navbar>
