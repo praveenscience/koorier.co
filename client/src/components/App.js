@@ -3,10 +3,13 @@ import { Switch, Route } from "react-router-dom";
 import KooNavBar from "./NavBar";
 
 class App extends Component {
+  state = {
+    User: null
+  };
   render() {
     return (
       <div className="App NavBarPadding">
-        <KooNavBar />
+        <KooNavBar User={this.state.User} />
         <Switch>
           <Route path="/about">About Page</Route>
           <Route path="/faqs">FAQs Page</Route>
