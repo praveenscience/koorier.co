@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import KooNavBar from "./NavBar";
+import Home from "./Pages/Home";
 
 class App extends Component {
   state = {
@@ -14,9 +15,7 @@ class App extends Component {
           <Route path="/about">About Page</Route>
           <Route path="/faqs">FAQs Page</Route>
           <Route path="/work">How it Works Page</Route>
-          <Route path="/" exact={true}>
-            Home Page
-          </Route>
+          <Route path="/" exact={true} component={Home} />
         </Switch>
       </div>
     );
