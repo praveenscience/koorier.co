@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
@@ -17,6 +19,8 @@ import {
 } from "reactstrap";
 
 const Login = () => {
+  const [Username, setUsername] = useState("");
+  const [Password, setPassword] = useState("");
   return (
     <div>
       <Container>
@@ -29,66 +33,70 @@ const Login = () => {
                   Please use your existing credentials to login.
                 </CardSubtitle>
                 <Form>
-                  <FormGroup>
-                    <Label for="exampleEmail">Input without validation</Label>
-                    <Input />
-                    <FormFeedback>
-                      You will not be able to see this
-                    </FormFeedback>
-                    <FormText>
-                      Example help text that remains unchanged.
-                    </FormText>
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="exampleEmail">Valid input</Label>
-                    <Input valid />
-                    <FormFeedback valid>
-                      Sweet! that name is available
-                    </FormFeedback>
-                    <FormText>
-                      Example help text that remains unchanged.
-                    </FormText>
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="examplePassword">Invalid input</Label>
-                    <Input invalid />
-                    <FormFeedback>
-                      Oh noes! that name is already taken
-                    </FormFeedback>
-                    <FormText>
-                      Example help text that remains unchanged.
-                    </FormText>
-                  </FormGroup>
-                  <FormGroup>
-                    <Label for="exampleEmail">Input without validation</Label>
-                    <Input />
-                    <FormFeedback tooltip>
-                      You will not be able to see this
-                    </FormFeedback>
-                    <FormText>
-                      Example help text that remains unchanged.
-                    </FormText>
-                  </FormGroup>
                   <FormGroup className="position-relative">
-                    <Label for="exampleEmail">Valid input</Label>
-                    <Input valid />
-                    <FormFeedback tooltip valid>
-                      Sweet! that name is available
+                    <Label for="username">Username</Label>
+                    <Input
+                      id="username"
+                      value={Username}
+                      onChange={e => setUsername(e.target.value)}
+                      valid={
+                        Username.trim().length > 2 &&
+                        Username.trim() !== "Praveen"
+                      }
+                      invalid={
+                        Username.trim().length > 2 &&
+                        Username.trim() === "Praveen"
+                      }
+                    />
+                    <FormFeedback
+                      valid={
+                        Username.trim().length > 2 &&
+                        Username.trim() !== "Praveen"
+                      }
+                      invalid={
+                        Username.trim().length > 2 &&
+                        Username.trim() === "Praveen"
+                      }
+                      tooltip={true}
+                    >
+                      {Username.trim().length > 2 &&
+                      Username.trim() === "Praveen"
+                        ? "Oh noes! that name is already taken!"
+                        : "Sweet! that name is available"}
                     </FormFeedback>
-                    <FormText>
-                      Example help text that remains unchanged.
-                    </FormText>
+                    <FormText>Enter your username.</FormText>
                   </FormGroup>
-                  <FormGroup className="position-relative">
-                    <Label for="examplePassword">Invalid input</Label>
-                    <Input invalid />
-                    <FormFeedback tooltip>
-                      Oh noes! that name is already taken
+                  <FormGroup className="position-relative mt-5">
+                    <Label for="password">Password</Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      value={Password}
+                      onChange={e => setPassword(e.target.value)}
+                      valid={Password.trim().length > 2}
+                      invalid={Password.trim().length <= 2}
+                    />
+                    <FormFeedback
+                      valid={Password.trim().length > 2}
+                      invalid={Password.trim().length <= 2}
+                      tooltip={true}
+                    >
+                      {Password.trim().length <= 2
+                        ? "Password should be at least 3 characters!"
+                        : "Great, thanks for a stronger password!"}
                     </FormFeedback>
-                    <FormText>
-                      Example help text that remains unchanged.
-                    </FormText>
+                    <FormText>Enter your password.</FormText>
                   </FormGroup>
+                  <Button
+                    className="mt-4"
+                    disabled={
+                      Username.trim() === "Praveen" ||
+                      Username.trim().length <= 2 ||
+                      Password.trim().length <= 2
+                    }
+                  >
+                    Submit
+                  </Button>
                 </Form>
               </CardBody>
               <CardFooter>
