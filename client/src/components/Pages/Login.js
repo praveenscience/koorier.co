@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
 import {
-  Button,
   Card,
   CardBody,
   CardFooter,
   CardSubtitle,
-  CardText,
   CardTitle,
   Col,
   Container,
+  Form,
+  FormFeedback,
+  FormGroup,
+  FormText,
+  Input,
+  Label,
   Row
 } from "reactstrap";
 
@@ -24,11 +28,68 @@ const Login = () => {
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
                   Please use your existing credentials to login.
                 </CardSubtitle>
-                <CardText>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </CardText>
-                <Button>Button</Button>
+                <Form>
+                  <FormGroup>
+                    <Label for="exampleEmail">Input without validation</Label>
+                    <Input />
+                    <FormFeedback>
+                      You will not be able to see this
+                    </FormFeedback>
+                    <FormText>
+                      Example help text that remains unchanged.
+                    </FormText>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleEmail">Valid input</Label>
+                    <Input valid />
+                    <FormFeedback valid>
+                      Sweet! that name is available
+                    </FormFeedback>
+                    <FormText>
+                      Example help text that remains unchanged.
+                    </FormText>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="examplePassword">Invalid input</Label>
+                    <Input invalid />
+                    <FormFeedback>
+                      Oh noes! that name is already taken
+                    </FormFeedback>
+                    <FormText>
+                      Example help text that remains unchanged.
+                    </FormText>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleEmail">Input without validation</Label>
+                    <Input />
+                    <FormFeedback tooltip>
+                      You will not be able to see this
+                    </FormFeedback>
+                    <FormText>
+                      Example help text that remains unchanged.
+                    </FormText>
+                  </FormGroup>
+                  <FormGroup className="position-relative">
+                    <Label for="exampleEmail">Valid input</Label>
+                    <Input valid />
+                    <FormFeedback tooltip valid>
+                      Sweet! that name is available
+                    </FormFeedback>
+                    <FormText>
+                      Example help text that remains unchanged.
+                    </FormText>
+                  </FormGroup>
+                  <FormGroup className="position-relative">
+                    <Label for="examplePassword">Invalid input</Label>
+                    <Input invalid />
+                    <FormFeedback tooltip>
+                      Oh noes! that name is already taken
+                    </FormFeedback>
+                    <FormText>
+                      Example help text that remains unchanged.
+                    </FormText>
+                  </FormGroup>
+                </Form>
               </CardBody>
               <CardFooter>
                 If you don't have an account, please kindly{" "}
