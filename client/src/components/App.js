@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import KooNavBar from "./NavBar";
+import About from "./Pages/About";
+import FAQs from "./Pages/FAQs";
 import Home from "./Pages/Home";
+import Works from "./Pages/Works";
 
 class App extends Component {
   state = {
@@ -12,9 +15,9 @@ class App extends Component {
       <div className="App NavBarPadding">
         <KooNavBar User={this.state.User} />
         <Switch>
-          <Route path="/about">About Page</Route>
-          <Route path="/faqs">FAQs Page</Route>
-          <Route path="/work">How it Works Page</Route>
+          <Route path="/about" component={About} />
+          <Route path="/faqs" component={FAQs} />
+          <Route path="/work" component={Works} />
           <Route path="/" exact={true} component={Home} />
         </Switch>
       </div>
