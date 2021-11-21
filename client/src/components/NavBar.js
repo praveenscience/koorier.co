@@ -1,8 +1,7 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   Navbar,
-  NavbarBrand,
   NavbarToggler,
   Collapse,
   Nav,
@@ -15,19 +14,19 @@ import {
 const KooNavBar = () => {
   return (
     <Navbar color="dark" dark expand="md" fixed="top" container>
-      <NavbarBrand href="/">
+      <Link to="/" className="navbar-brand">
         <img
           src="https://i.imgur.com/wzqOe1S.png"
           alt="Koorier"
           width="30"
           height="30"
         />
-      </NavbarBrand>
+      </Link>
       <NavbarToggler onClick={function noRefCheck() {}} />
       <Collapse navbar>
         <Nav className="ms-auto" navbar>
           <NavItem>
-            <NavLink to="/" className="nav-link">
+            <NavLink to="/" exact={true} className="nav-link">
               Home
             </NavLink>
           </NavItem>
