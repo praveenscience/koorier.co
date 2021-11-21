@@ -32,7 +32,7 @@ const KooNavBar = () => {
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink to="/About" className="nav-link">
+            <NavLink to="/about" className="nav-link">
               About
             </NavLink>
           </NavItem>
