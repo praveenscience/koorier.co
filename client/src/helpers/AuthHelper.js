@@ -21,3 +21,16 @@ export const LoginUser = (Username, Password) => {
     }
   }
 };
+
+export const RegisterUser = (Username, Password, Fullname, Email) => {
+  if (typeof Users[Username] === "undefined") {
+    // User doesn't exist.
+    Users[Username] = {
+      Password,
+      Fullname,
+      Email
+    };
+  } else {
+    // User is already there!
+  }
+};
