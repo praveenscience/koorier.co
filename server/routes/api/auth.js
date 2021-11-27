@@ -1,9 +1,7 @@
 const app = require("express").Router();
-const auth = require("./api/auth");
 
 app.get("/", (req, res) => {
-  res.json("API Route!");
+  res.json("Tell if it's auth'd");
 });
-app.use("/auth", auth);
 
 module.exports = app;
