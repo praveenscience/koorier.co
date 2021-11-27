@@ -36,7 +36,7 @@ const Post = () => {
                         <span className="d-block">
                           <strong>Delivery Requests</strong>
                         </span>
-                        <span className="d-block">
+                        <span className="d-block pe-5">
                           Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Suscipit quia quo, laborum doloremque maiores
                           dolorem voluptatem facilis fuga repellendus. Incidunt
@@ -72,7 +72,7 @@ const Post = () => {
                         <span className="d-block">
                           <strong>Courier Travels</strong>
                         </span>
-                        <span className="d-block">
+                        <span className="d-block pe-5">
                           Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Suscipit quia quo, laborum doloremque maiores
                           dolorem voluptatem facilis fuga repellendus. Incidunt
@@ -85,14 +85,17 @@ const Post = () => {
                 </div>
               </div>
               {Selected && (
-                <button
-                  className="btn btn-sm btn-info"
-                  onClick={() => {
-                    setSelected(null);
-                  }}
-                >
-                  Reset
-                </button>
+                <>
+                  <button
+                    className="btn btn-sm btn-info"
+                    onClick={() => {
+                      setSelected(null);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button className="btn btn-sm btn-success">Next</button>
+                </>
               )}
             </form>
           </div>
