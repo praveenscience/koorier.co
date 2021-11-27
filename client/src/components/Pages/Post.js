@@ -85,17 +85,17 @@ const Post = () => {
                 </div>
               </div>
               {Selected && (
-                <>
+                <div className="action-buttons">
                   <button
-                    className="btn btn-sm btn-info"
+                    className="btn btn-outline-info"
                     onClick={() => {
                       setSelected(null);
                     }}
                   >
                     Cancel
                   </button>
-                  <button className="btn btn-sm btn-success">Next</button>
-                </>
+                  <button className="btn btn-success">Next</button>
+                </div>
               )}
             </form>
           </div>

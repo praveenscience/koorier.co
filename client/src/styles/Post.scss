@@ -1,6 +1,6 @@
 .Post {
   background-color: #f5f5f5;
-  min-height: 95vh;
+  min-height: 90vh;
   h1 {
     background-color: #eacab4;
     padding: 25px;
@@ -57,6 +57,12 @@
           }
         }
       }
+    }
+  }
+  .action-buttons {
+    text-align: right;
+    button {
+      margin-left: 15px;
     }
   }
 }
