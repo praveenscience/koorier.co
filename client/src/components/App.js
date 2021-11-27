@@ -5,6 +5,7 @@ import About from "./Pages/About";
 import FAQs from "./Pages/FAQs";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import Post from "./Pages/Post";
 import Register from "./Pages/Register";
 import Works from "./Pages/Works";
 
@@ -45,6 +46,7 @@ class App extends Component {
             {!this.state.User && <Redirect to="/login" />}
             Dashboard
           </Route>
+          <Route path="/post" component={Post} />
           <Route path="/" exact={true} component={Home} />
         </Switch>
       </div>
