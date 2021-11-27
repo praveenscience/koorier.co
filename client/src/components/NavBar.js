@@ -58,6 +58,11 @@ const KooNavBar = ({ User }) => {
           {User ? (
             <>
               <NavItem>
+                <NavLink to="/dashboard" className="nav-link">
+                  Dashboard
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink to="/profile" className="nav-link">
                   Profile
                 </NavLink>
