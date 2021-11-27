@@ -12,12 +12,21 @@ const Users = {
 };
 export const LoginUser = (Username, Password) => {
   if (typeof Users[Username] === "undefined") {
-    // User doesn't exist.
+    return {
+      Error: true,
+      Message: "User doesn't exist."
+    };
   } else {
     if (Users[Username].Password === Password) {
-      // Correct User & Password
+      return {
+        Error: false,
+        Message: { Username, ...Users[Username] }
+      };
     } else {
-      // Correct User but Wrong Password
+      return {
+        Error: true,
+        Message: "Incorrect Username or Password."
+      };
     }
   }
 };
