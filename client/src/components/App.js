@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import KooNavBar from "./NavBar";
 import About from "./Pages/About";
 import FAQs from "./Pages/FAQs";
@@ -23,11 +23,25 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/faqs" component={FAQs} />
           <Route path="/work" component={Works} />
-          <Route
-            path="/login"
-            render={() => <Login handleAuth={this.handleAuth} />}
-          />
-          <Route path="/register" component={Register} />
+          {this.state.User ? (
+            <>
+              <Route
+                path="/login"
+                render={() => <Login handleAuth={this.handleAuth} />}
+              />
+              <Route
+                path="/register"
+                render={() => <Register handleAuth={this.handleAuth} />}
+              />
+            </>
+          ) : (
+            <>
+              <Route path={["/login", "/register"]}>
+                <Redirect path="/" />
+              </Route>
+              <Route>Dashboard</Route>
+            </>
+          )}
           <Route path="/" exact={true} component={Home} />
         </Switch>
       </div>
