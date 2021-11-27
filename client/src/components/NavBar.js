@@ -13,7 +13,14 @@ import {
 
 const KooNavBar = ({ User }) => {
   return (
-    <Navbar color="dark" dark expand="md" fixed="top" container>
+    <Navbar
+      color="dark"
+      dark
+      expand="md"
+      fixed="top"
+      container
+      className="KooNavBar"
+    >
       <Link to="/" className="navbar-brand">
         <img
           src="https://i.imgur.com/wzqOe1S.png"
