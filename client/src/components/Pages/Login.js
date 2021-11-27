@@ -19,12 +19,20 @@ import {
 } from "reactstrap";
 import { LoginUser } from "../../helpers/AuthHelper";
 
-const Login = () => {
+const Login = ({ handleAuth }) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
+  const [UserError, setUserError] = useState(null);
   const handleSubmit = e => {
     e.preventDefault();
-    LoginUser(Username, Password);
+    const Resp = LoginUser(Username, Password);
+    if (Resp.Error) {
+      setUserError(Resp.Message);
+    } else {
+      window.alert("Works");
+      setUserError(null);
+      handleAuth(Resp.Message);
+    }
   };
   return (
     <div className="Login pb-5">
@@ -44,30 +52,17 @@ const Login = () => {
                       id="username"
                       value={Username}
                       onChange={e => setUsername(e.target.value)}
-                      valid={
-                        Username.trim().length > 2 &&
-                        Username.trim() !== "Praveen"
-                      }
-                      invalid={
-                        Username.trim().length > 2 &&
-                        Username.trim() === "Praveen"
-                      }
+                      valid={Username.trim().length > 2 && !UserError}
+                      invalid={Username.trim().length > 2 && UserError}
                     />
                     <FormFeedback
-                      valid={
-                        Username.trim().length > 2 &&
-                        Username.trim() !== "Praveen"
-                      }
-                      invalid={
-                        Username.trim().length > 2 &&
-                        Username.trim() === "Praveen"
-                      }
+                      valid={Username.trim().length > 2 && !UserError}
+                      invalid={Username.trim().length > 2 && UserError}
                       tooltip={true}
                     >
-                      {Username.trim().length > 2 &&
-                      Username.trim() === "Praveen"
-                        ? "Oh noes! that name is already taken!"
-                        : "Sweet! that name is available"}
+                      {Username.trim().length > 2 && UserError
+                        ? UserError
+                        : "Hoping the username is already registered..."}
                     </FormFeedback>
                     <FormText>Enter your username.</FormText>
                   </FormGroup>
@@ -95,9 +90,7 @@ const Login = () => {
                   <Button
                     className="mt-4"
                     disabled={
-                      Username.trim() === "Praveen" ||
-                      Username.trim().length <= 2 ||
-                      Password.trim().length <= 2
+                      Username.trim().length <= 2 || Password.trim().length <= 2
                     }
                   >
                     Submit

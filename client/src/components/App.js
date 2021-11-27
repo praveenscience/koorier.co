@@ -23,7 +23,10 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/faqs" component={FAQs} />
           <Route path="/work" component={Works} />
-          <Route path="/login" component={Login} />
+          <Route
+            path="/login"
+            render={() => <Login handleAuth={this.handleAuth} />}
+          />
           <Route path="/register" component={Register} />
           <Route path="/" exact={true} component={Home} />
         </Switch>
