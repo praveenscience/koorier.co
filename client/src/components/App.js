@@ -12,6 +12,9 @@ class App extends Component {
   state = {
     User: null
   };
+  handleAuth = User => {
+    this.setState({ User });
+  };
   render() {
     return (
       <div className="App NavBarPadding">
