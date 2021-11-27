@@ -29,7 +29,6 @@ const Login = ({ handleAuth }) => {
     if (Resp.Error) {
       setUserError(Resp.Message);
     } else {
-      window.alert("Works");
       setUserError(null);
       handleAuth(Resp.Message);
     }

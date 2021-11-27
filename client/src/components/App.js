@@ -23,25 +23,28 @@ class App extends Component {
           <Route path="/about" component={About} />
           <Route path="/faqs" component={FAQs} />
           <Route path="/work" component={Works} />
-          {this.state.User ? (
-            <>
-              <Route
-                path="/login"
-                render={() => <Login handleAuth={this.handleAuth} />}
-              />
-              <Route
-                path="/register"
-                render={() => <Register handleAuth={this.handleAuth} />}
-              />
-            </>
-          ) : (
-            <>
-              <Route path={["/login", "/register"]}>
-                <Redirect path="/" />
-              </Route>
-              <Route>Dashboard</Route>
-            </>
-          )}
+          <Route
+            path="/login"
+            render={() => (
+              <>
+                {this.state.User && <Redirect to="/dashboard" />}
+                <Login handleAuth={this.handleAuth} />
+              </>
+            )}
+          />
+          <Route
+            path="/register"
+            render={() => (
+              <>
+                {this.state.User && <Redirect to="/dashboard" />}
+                <Register handleAuth={this.handleAuth} />
+              </>
+            )}
+          />
+          <Route path="/dashboard">
+            {!this.state.User && <Redirect to="/login" />}
+            Dashboard
+          </Route>
           <Route path="/" exact={true} component={Home} />
         </Switch>
       </div>
