@@ -21,6 +21,9 @@ import {
 const Login = () => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
   return (
     <div className="Login pb-5">
       <Container>
@@ -32,7 +35,7 @@ const Login = () => {
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
                   Please use your existing credentials to login.
                 </CardSubtitle>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <FormGroup className="position-relative">
                     <Label for="username">Username</Label>
                     <Input

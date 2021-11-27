@@ -24,6 +24,9 @@ const Register = () => {
   const [ConfPass, setConfPass] = useState("");
   const [Fullname, setFullname] = useState("");
   const [Email, setEmail] = useState("");
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
   return (
     <div className="Register pb-5">
       <Container>
@@ -35,7 +38,7 @@ const Register = () => {
                 <CardSubtitle className="mb-2 text-muted" tag="h6">
                   Please enter your information to create a new account here.
                 </CardSubtitle>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                   <FormGroup className="position-relative">
                     <Label for="username">Username</Label>
                     <Input
