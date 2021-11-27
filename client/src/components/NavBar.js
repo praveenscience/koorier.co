@@ -87,6 +87,11 @@ const KooNavBar = ({ User }) => {
               </NavItem>
             </>
           )}
+          <NavItem>
+            <NavLink to="/post" className="nav-link btn btn-success text-light">
+              Post A Request
+            </NavLink>
+          </NavItem>
         </Nav>
       </Collapse>
     </Navbar>
