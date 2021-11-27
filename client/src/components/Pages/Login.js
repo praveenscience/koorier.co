@@ -17,12 +17,14 @@ import {
   Label,
   Row
 } from "reactstrap";
+import { LoginUser } from "../../helpers/AuthHelper";
 
 const Login = () => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const handleSubmit = e => {
     e.preventDefault();
+    LoginUser(Username, Password);
   };
   return (
     <div className="Login pb-5">

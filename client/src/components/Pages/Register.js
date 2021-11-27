@@ -17,6 +17,7 @@ import {
   Label,
   Row
 } from "reactstrap";
+import { RegisterUser } from "../../helpers/AuthHelper";
 
 const Register = () => {
   const [Username, setUsername] = useState("");
@@ -26,6 +27,7 @@ const Register = () => {
   const [Email, setEmail] = useState("");
   const handleSubmit = e => {
     e.preventDefault();
+    RegisterUser(Username, Password, Fullname, Email);
   };
   return (
     <div className="Register pb-5">
