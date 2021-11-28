@@ -52,7 +52,30 @@ app.post("/", (req, res) => {
   }
 });
 app.put("/", (req, res) => {
-  res.json("Call the register function");
+  const { Username, Password, Fullname, Email } = req.body;
+  if (!Username || !Password || !Fullname || !Email) {
+    res.status(400).json({
+      Error: true,
+      Message: "Need all Username, Password, Fullname and Email!"
+    });
+  } else {
+    if (typeof Users[Username] === "undefined") {
+      Users[Username] = {
+        Password,
+        Fullname,
+        Email
+      };
+      res.status(201).json({
+        Error: false,
+        Message: `User ${Fullname} created with username ${Username}.`
+      });
+    } else {
+      res.status(409).json({
+        Error: true,
+        Message: "User already exists."
+      });
+    }
+  }
 });
 app.delete("/", (req, res) => {
   req.session.destroy(function () {
