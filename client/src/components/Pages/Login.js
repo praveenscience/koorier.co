@@ -17,7 +17,7 @@ import {
   Label,
   Row
 } from "reactstrap";
-import { LoginUser } from "../../helpers/AuthHelper";
+import { LoginUser } from "../../services/Auth";
 
 const Login = ({ handleAuth }) => {
   const [Username, setUsername] = useState("");
@@ -25,13 +25,14 @@ const Login = ({ handleAuth }) => {
   const [UserError, setUserError] = useState(null);
   const handleSubmit = e => {
     e.preventDefault();
-    const Resp = LoginUser(Username, Password);
-    if (Resp.Error) {
-      setUserError(Resp.Message);
-    } else {
-      setUserError(null);
-      handleAuth(Resp.Message);
-    }
+    LoginUser(Username, Password)
+      .then(res => {
+        setUserError(null);
+        handleAuth(res.data.Message.User);
+      })
+      .catch(err => {
+        setUserError(err.response.data.Message);
+      });
   };
   return (
     <div className="Login pb-5">
