@@ -19,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App NavBarPadding">
-        <KooNavBar User={this.state.User} />
+        <KooNavBar User={this.state.User} handleAuth={this.handleAuth} />
         <Switch>
           <Route path="/about" component={About} />
           <Route path="/faqs" component={FAQs} />

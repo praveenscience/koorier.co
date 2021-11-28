@@ -43,3 +43,7 @@ export const RegisterUser = (Username, Password, Fullname, Email) => {
     // User is already there!
   }
 };
+
+export const LogoutUser = () => {
+  return true;
+};

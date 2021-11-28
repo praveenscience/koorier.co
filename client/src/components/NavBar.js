@@ -10,8 +10,13 @@ import {
   DropdownToggle,
   DropdownMenu
 } from "reactstrap";
+import { LogoutUser } from "../helpers/AuthHelper";
 
-const KooNavBar = ({ User }) => {
+const KooNavBar = ({ User, handleAuth }) => {
+  const handleLogout = () => {
+    LogoutUser();
+    handleAuth(null);
+  };
   return (
     <Navbar
       color="dark"
@@ -68,7 +73,7 @@ const KooNavBar = ({ User }) => {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <Link to="/" className="nav-link">
+                <Link to="/" className="nav-link" onClick={handleLogout}>
                   Logout
                 </Link>
               </NavItem>
