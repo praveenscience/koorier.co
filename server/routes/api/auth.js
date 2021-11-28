@@ -21,7 +21,9 @@ app.put("/", (req, res) => {
   res.json("Call the register function");
 });
 app.delete("/", (req, res) => {
-  res.json("Call the logout function");
+  req.session.destroy(function () {
+    res.status(204).end();
+  });
 });
 
 module.exports = app;
