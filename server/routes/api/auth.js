@@ -5,7 +5,10 @@ app.get("/", (req, res) => {
   if (req.session.User) {
     res.json({
       Error: false,
-      Message: req.session
+      Message: {
+        ...req.session,
+        SessionID: req.sessionID
+      }
     });
   } else {
     res.status(403).json({
