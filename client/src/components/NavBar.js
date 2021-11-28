@@ -10,12 +10,13 @@ import {
   DropdownToggle,
   DropdownMenu
 } from "reactstrap";
-import { LogoutUser } from "../helpers/AuthHelper";
+import { LogoutUser } from "../services/Auth";
 
 const KooNavBar = ({ User, handleAuth }) => {
   const handleLogout = () => {
-    LogoutUser();
-    handleAuth(null);
+    LogoutUser().then(() => {
+      handleAuth(null);
+    });
   };
   return (
     <Navbar
