@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { GetCurrentUser } from "../services/Auth";
 import KooNavBar from "./NavBar";
 import About from "./Pages/About";
+import Dashboard from "./Pages/Dashboard";
 import FAQs from "./Pages/FAQs";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
@@ -53,7 +54,7 @@ class App extends Component {
           />
           <Route path="/dashboard">
             {!this.state.User && <Redirect to="/login" />}
-            Dashboard
+            <Dashboard User={this.state.User} />
           </Route>
           <Route path="/profile">
             {!this.state.User && <Redirect to="/login" />}
