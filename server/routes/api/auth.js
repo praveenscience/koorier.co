@@ -17,6 +17,12 @@ app.get("/", (req, res) => {
     });
   }
 });
+app.get("/:Username", (req, res) => {
+  res.json({
+    Error: false,
+    Message: typeof Users[req.params.Username] === "undefined"
+  });
+});
 app.post("/", (req, res) => {
   const { Username, Password } = req.body;
   if (!Username || !Password) {

@@ -9,3 +9,5 @@ export const RegisterUser = (Username, Password, Fullname, Email) =>
   Axios.put("/api/auth", { Username, Password, Fullname, Email });
 
 export const LogoutUser = () => Axios.delete("/api/auth");
+
+export const CheckUser = Username => Axios.get("/api/auth/" + Username);

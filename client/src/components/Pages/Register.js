@@ -17,10 +17,11 @@ import {
   Label,
   Row
 } from "reactstrap";
-import { RegisterUser } from "../../services/Auth";
+import { CheckUser, RegisterUser } from "../../services/Auth";
 
 const Register = ({ handleAuth }) => {
   const [Username, setUsername] = useState("");
+  const [UserError, setUserError] = useState(null);
   const [Password, setPassword] = useState("");
   const [ConfPass, setConfPass] = useState("");
   const [Fullname, setFullname] = useState("");
@@ -29,6 +30,15 @@ const Register = ({ handleAuth }) => {
     e.preventDefault();
     RegisterUser(Username, Password, Fullname, Email).then(res => {
       handleAuth(res.data);
+    });
+  };
+  const checkUser = () => {
+    CheckUser(Username).then(res => {
+      if (res.data.Message) {
+        setUserError(null);
+      } else {
+        setUserError("Oh noes! that name is already taken!");
+      }
     });
   };
   return (
@@ -48,30 +58,21 @@ const Register = ({ handleAuth }) => {
                     <Input
                       id="username"
                       value={Username}
-                      onChange={e => setUsername(e.target.value)}
-                      valid={
-                        Username.trim().length > 2 &&
-                        Username.trim() !== "Praveen"
-                      }
-                      invalid={
-                        Username.trim().length > 2 &&
-                        Username.trim() === "Praveen"
-                      }
+                      onChange={e => {
+                        setUserError(null);
+                        setUsername(e.target.value);
+                      }}
+                      valid={Username.trim().length > 2 && !UserError}
+                      invalid={Username.trim().length > 2 && UserError}
+                      onBlur={checkUser}
                     />
                     <FormFeedback
-                      valid={
-                        Username.trim().length > 2 &&
-                        Username.trim() !== "Praveen"
-                      }
-                      invalid={
-                        Username.trim().length > 2 &&
-                        Username.trim() === "Praveen"
-                      }
+                      valid={Username.trim().length > 2 && !UserError}
+                      invalid={Username.trim().length > 2 && UserError}
                       tooltip={true}
                     >
-                      {Username.trim().length > 2 &&
-                      Username.trim() === "Praveen"
-                        ? "Oh noes! that name is already taken!"
+                      {Username.trim().length > 2 && UserError
+                        ? UserError
                         : "Sweet! that name is available"}
                     </FormFeedback>
                     <FormText>Enter your username.</FormText>
@@ -147,7 +148,7 @@ const Register = ({ handleAuth }) => {
                   <Button
                     className="mt-4"
                     disabled={
-                      Username.trim() === "Praveen" ||
+                      UserError ||
                       Username.trim().length <= 2 ||
                       Password.trim().length <= 2 ||
                       ConfPass.trim().length <= 2 ||
