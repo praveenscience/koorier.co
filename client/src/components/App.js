@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { GetCurrentUser } from "../services/Auth";
 import KooNavBar from "./NavBar";
 import About from "./Pages/About";
 import FAQs from "./Pages/FAQs";
@@ -16,6 +17,13 @@ class App extends Component {
   handleAuth = User => {
     this.setState({ User });
   };
+  componentDidMount() {
+    GetCurrentUser().then(res => {
+      this.setState({
+        User: res.data.Message.User
+      });
+    });
+  }
   render() {
     return (
       <div className="App NavBarPadding">
