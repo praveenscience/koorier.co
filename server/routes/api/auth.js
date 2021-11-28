@@ -37,7 +37,10 @@ app.post("/", (req, res) => {
         req.session.User = User;
         res.json({
           Error: false,
-          Message: req.session.User
+          Message: {
+            ...req.session,
+            SessionID: req.sessionID
+          }
         });
       } else {
         res.status(404).json({
