@@ -17,9 +17,9 @@ import {
   Label,
   Row
 } from "reactstrap";
-import { RegisterUser } from "../../helpers/AuthHelper";
+import { RegisterUser } from "../../services/Auth";
 
-const Register = () => {
+const Register = ({ handleAuth }) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [ConfPass, setConfPass] = useState("");
@@ -27,7 +27,9 @@ const Register = () => {
   const [Email, setEmail] = useState("");
   const handleSubmit = e => {
     e.preventDefault();
-    RegisterUser(Username, Password, Fullname, Email);
+    RegisterUser(Username, Password, Fullname, Email).then(res => {
+      handleAuth(res.data);
+    });
   };
   return (
     <div className="Register pb-5">
